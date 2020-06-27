@@ -1,16 +1,16 @@
 -- Projekt bazy danych Banku Krwi.
--- Zak³ada mo¿liwoœæ dodawania nowych dawców, magazynowania ich danych i donacji.
--- Przechowuje i modyfikuje informacje o stanie magazynowym poszczególnych grup krwi.
+-- ZakÅ‚ada moÅ¼liwoÅ›Ä‡ dodawania nowych dawcÃ³w, magazynowania ich danych i donacji.
+-- Przechowuje i modyfikuje informacje o stanie magazynowym poszczegÃ³lnych grup krwi.
 
 
 IF EXISTS (SELECT name FROM master.sys.databases WHERE name = N'BankKrwi')
 BEGIN
-	PRINT 'Baza danych Bank krwi ju¿ istnieje.'
+	PRINT 'Baza danych Bank krwi juÂ¿ istnieje.'
 END
 ELSE
 BEGIN
 	CREATE DATABASE BankKrwi
-	PRINT 'Stworzono bazê danych Bank krwi.'
+	PRINT 'Stworzono bazÃª danych Bank krwi.'
 END
 GO
 
@@ -20,7 +20,7 @@ GO
 
 IF EXISTS (SELECT * FROM sys.tables where name = N'Dawca')
 BEGIN
-	PRINT 'Tabela Dawca ju¿ istnieje.'
+	PRINT 'Tabela Dawca juÂ¿ istnieje.'
 END
 ELSE
 BEGIN
@@ -39,7 +39,7 @@ BEGIN
 		)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 		) ON [PRIMARY]
 
-	PRINT 'Tabela Dawca zosta³a utworzona.'
+	PRINT 'Tabela Dawca zostaÂ³a utworzona.'
 END
 GO
 
@@ -50,11 +50,11 @@ BEGIN
 		[idDawca] [int] NOT NULL,
 		[Ilosc] [numeric](3,2) NOT NULL,
 		[DataDonacji] [smalldatetime])
-	PRINT 'Tabela Donacje zosta³a utworzona.'
+	PRINT 'Tabela Donacje zostaÂ³a utworzona.'
 END
 ELSE
 BEGIN
-	PRINT 'Tabela Donacje ju¿ istnieje.'
+	PRINT 'Tabela Donacje juÂ¿ istnieje.'
 END
 GO
 
@@ -64,11 +64,11 @@ BEGIN
 	CREATE TABLE StanDawcy(
 		[idDawcaStan] [int] NOT NULL,
 		[idChoroba] [int] NOT NULL)
-	PRINT 'Tabela StanDawcy zosta³a utworzona.'
+	PRINT 'Tabela StanDawcy zostaÂ³a utworzona.'
 END
 ELSE
 BEGIN
-	PRINT 'Tabela StanDawcy ju¿ istnieje.'
+	PRINT 'Tabela StanDawcy juÂ¿ istnieje.'
 END
 GO
 
@@ -85,11 +85,11 @@ BEGIN
 	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 	) ON [PRIMARY]
 
-	PRINT 'Tabela Choroby zosta³a utworzona.'
+	PRINT 'Tabela Choroby zostaÂ³a utworzona.'
 END
 ELSE
 BEGIN
-	PRINT 'Tabela Choroby ju¿ istnieje.'
+	PRINT 'Tabela Choroby juÂ¿ istnieje.'
 END
 GO
 
@@ -99,11 +99,11 @@ BEGIN
 	CREATE TABLE LekiDawcy(
 		[idDawcaLek] [int] NOT NULL,
 		[idLek] [int] NOT NULL)
-	PRINT 'Tabela LekiDawcy zosta³a utworzona.'
+	PRINT 'Tabela LekiDawcy zostaÂ³a utworzona.'
 END
 ELSE
 BEGIN
-	PRINT 'Tabela LekiDawcy ju¿ istnieje.'
+	PRINT 'Tabela LekiDawcy juÂ¿ istnieje.'
 END
 GO
 
@@ -120,11 +120,11 @@ BEGIN
 	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 	) ON [PRIMARY]
 
-	PRINT 'Tabela Leki zosta³a utworzona.'
+	PRINT 'Tabela Leki zostaÂ³a utworzona.'
 END
 ELSE
 BEGIN
-	PRINT 'Tabela Leki ju¿ istnieje.'
+	PRINT 'Tabela Leki juÂ¿ istnieje.'
 END
 GO
 
@@ -141,11 +141,11 @@ BEGIN
 	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 	) ON [PRIMARY]
 
-	PRINT 'Tabela GrupaKrwi zosta³a utworzona.'
+	PRINT 'Tabela GrupaKrwi zostaÂ³a utworzona.'
 END
 ELSE
 BEGIN
-	PRINT 'Tabela GrupaKrwi ju¿ istnieje.'
+	PRINT 'Tabela GrupaKrwi juÂ¿ istnieje.'
 END
 GO
 
@@ -155,11 +155,11 @@ BEGIN
 	CREATE TABLE StanMagazynowy(
 		[idGrupaKrwi] [int] NOT NULL,
 		[IloscLitry] [numeric](5,2) NOT NULL)
-	PRINT 'Tabela StanMagazynowy zosta³a utworzona.'
+	PRINT 'Tabela StanMagazynowy zostaÂ³a utworzona.'
 END
 ELSE
 BEGIN
-	PRINT 'Tabela StanMagazynowy ju¿ istnieje.'
+	PRINT 'Tabela StanMagazynowy juÂ¿ istnieje.'
 END
 GO
 
@@ -183,11 +183,11 @@ BEGIN
 		UX_Adres
 	ON Adres(Ulica, NumerMieszkania, Miasto, KodPocztowy, Kraj)
 
-	PRINT 'Tabela Adres zosta³a utworzona.'
+	PRINT 'Tabela Adres zostaÂ³a utworzona.'
 END
 ELSE
 BEGIN
-	PRINT 'Tabela Adres ju¿ istnieje.'
+	PRINT 'Tabela Adres juÂ¿ istnieje.'
 END
 GO
 
@@ -209,7 +209,7 @@ BEGIN
 	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 	) ON [PRIMARY]
 
-	PRINT 'Tabela Pracownik zosta³a utworzona.'
+	PRINT 'Tabela Pracownik zostaÂ³a utworzona.'
 END
 GO
 
@@ -225,11 +225,11 @@ BEGIN
 	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 	) ON [PRIMARY]
 
-	PRINT 'Tabela Stanowisko zosta³a utworzona.'
+	PRINT 'Tabela Stanowisko zostaÂ³a utworzona.'
 END
 ELSE
 BEGIN
-	PRINT 'Tabela Stanowisko ju¿ istnieje.'
+	PRINT 'Tabela Stanowisko juÂ¿ istnieje.'
 END
 GO
 
@@ -244,29 +244,29 @@ GO
 
 INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (1, 'Golf View', '7666', 'Obryte', '07-215', 'Poland');
 GO
-INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (2, 'Moulton', '899', 'Dobrzeñ Wielki', '46-081', 'Poland');
+INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (2, 'Moulton', '899', 'DobrzeÃ± Wielki', '46-081', 'Poland');
 GO
-INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (3, 'Goodland', '32', 'Micha³ów-Reginów', '61-731', 'Poland');
+INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (3, 'Goodland', '32', 'MichaÂ³Ã³w-ReginÃ³w', '61-731', 'Poland');
 GO
-INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (4, 'Canary', '3', '£¹cko', '33-390', 'Poland');
+INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (4, 'Canary', '3', 'Â£Â¹cko', '33-390', 'Poland');
 GO
-INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (5, 'Troy', '91443', 'Soœno', '89-412', 'Poland');
+INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (5, 'Troy', '91443', 'SoÅ“no', '89-412', 'Poland');
 GO
-INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (6, 'Talmadge', '8584', 'K³omnice', '42-270', 'Poland');
+INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (6, 'Talmadge', '8584', 'KÂ³omnice', '42-270', 'Poland');
 GO
 INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (7, 'Evergreen', '21', 'Kobylanka', '73-108', 'Poland');
 GO
-INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (8, 'Clemons', '744', 'Bia³a Piska', '12-230', 'Poland');
+INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (8, 'Clemons', '744', 'BiaÂ³a Piska', '12-230', 'Poland');
 GO
 INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (9, 'Milwaukee', '7247', 'Bojszowy Nowe', '43-220', 'Poland');
 GO
-INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (10, 'Eagle Crest', '4', 'BrzeŸnica', '68-113', 'Poland');
+INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (10, 'Eagle Crest', '4', 'BrzeÅ¸nica', '68-113', 'Poland');
 GO
-INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (11, 'Rutledge', '6906', 'Mazañcowice', '43-391', 'Poland');
+INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (11, 'Rutledge', '6906', 'MazaÃ±cowice', '43-391', 'Poland');
 GO
 INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (12, 'Boyd', '765', 'Borek', '32-765', 'Poland');
 GO
-INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (13, 'Duke', '81485', 'Ksiê¿pol', '23-415', 'Poland');
+INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (13, 'Duke', '81485', 'KsiÃªÂ¿pol', '23-415', 'Poland');
 GO
 INSERT Adres ([AdresID], [Ulica], [NumerMieszkania], [Miasto], [KodPocztowy], [Kraj]) VALUES (14, 'Moulton', '5212', 'Chwaszczyno', '80-209', 'Poland');
 GO
@@ -287,11 +287,11 @@ INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (1, 'Cukrzyca
 GO
 INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (2, 'Wady Serca', 'Tak')
 GO
-INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (3, 'Miad¿d¿yca', 'Tak')
+INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (3, 'MiadÂ¿dÂ¿yca', 'Tak')
 GO
-INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (4, 'Nowotwór', 'Tak')
+INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (4, 'NowotwÃ³r', 'Tak')
 GO
-INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (5, '¯ó³taczka', 'Tak')
+INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (5, 'Â¯Ã³Â³taczka', 'Tak')
 GO
 INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (6, 'AIDS', 'Tak')
 GO
@@ -299,9 +299,9 @@ INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (7, 'Malaria'
 GO
 INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (8, 'Grypa', '2 tygodnie')
 GO
-INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (9, 'GruŸlica', '2 lata')
+INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (9, 'GruÅ¸lica', '2 lata')
 GO
-INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (10, 'Toksoplazmoza', '6 miesiêcy')
+INSERT Choroby ([ChorobaID], [NazwaChoroby], [Wykluczenie]) VALUES (10, 'Toksoplazmoza', '6 miesiÃªcy')
 GO
 
 
@@ -407,7 +407,7 @@ SET IDENTITY_INSERT Leki ON
 GO
 INSERT Leki ([LekID], [NazwaLeku], [Wykluczenie]) VALUES (1, 'Leki hormonalne', 'Nie')
 GO
-INSERT Leki ([LekID], [NazwaLeku], [Wykluczenie]) VALUES (2, 'Leki na astmê', 'Tak')
+INSERT Leki ([LekID], [NazwaLeku], [Wykluczenie]) VALUES (2, 'Leki na astmÃª', 'Tak')
 GO
 INSERT Leki ([LekID], [NazwaLeku], [Wykluczenie]) VALUES (3, 'Leki przeciwcukrzycowe', 'Tak')
 GO
@@ -459,7 +459,7 @@ INSERT Pracownik ([PracownikID], [idAdres], [NumerPesel], [Imie], [DrugieImie], 
 GO
 INSERT Pracownik ([PracownikID], [idAdres], [NumerPesel], [Imie], [DrugieImie], [Nazwisko], [NumerTelefonu], [idStanowisko]) VALUES (4, 13, '71031220767', 'Maria', 'Agata', 'Majewska', '765-123-123', 1)
 GO
-INSERT Pracownik ([PracownikID], [idAdres], [NumerPesel], [Imie], [DrugieImie], [Nazwisko], [NumerTelefonu], [idStanowisko]) VALUES (5, 14, '94060652707', 'Aneta', NULL, 'WoŸniak', '798-474-553', 5)
+INSERT Pracownik ([PracownikID], [idAdres], [NumerPesel], [Imie], [DrugieImie], [Nazwisko], [NumerTelefonu], [idStanowisko]) VALUES (5, 14, '94060652707', 'Aneta', NULL, 'WoÅ¸niak', '798-474-553', 5)
 GO
 INSERT Pracownik ([PracownikID], [idAdres], [NumerPesel], [Imie], [DrugieImie], [Nazwisko], [NumerTelefonu], [idStanowisko]) VALUES (6, 15, '91090211029', 'Agnieszka', 'Beata', 'Makowska', '714-325-325', 3)
 GO
@@ -467,7 +467,7 @@ INSERT Pracownik ([PracownikID], [idAdres], [NumerPesel], [Imie], [DrugieImie], 
 GO
 INSERT Pracownik ([PracownikID], [idAdres], [NumerPesel], [Imie], [DrugieImie], [Nazwisko], [NumerTelefonu], [idStanowisko]) VALUES (8, 16, '89122444590', 'Krystian', 'Ryszard', 'Michalak', '651-858-626', 7)
 GO
-INSERT Pracownik ([PracownikID], [idAdres], [NumerPesel], [Imie], [DrugieImie], [Nazwisko], [NumerTelefonu], [idStanowisko]) VALUES (9, 17, '79082422275', 'Rafa³', NULL, 'Soko³owski', '665-955-553', 2)
+INSERT Pracownik ([PracownikID], [idAdres], [NumerPesel], [Imie], [DrugieImie], [Nazwisko], [NumerTelefonu], [idStanowisko]) VALUES (9, 17, '79082422275', 'RafaÂ³', NULL, 'SokoÂ³owski', '665-955-553', 2)
 GO
 INSERT Pracownik ([PracownikID], [idAdres], [NumerPesel], [Imie], [DrugieImie], [Nazwisko], [NumerTelefonu], [idStanowisko]) VALUES (10, 12, '70031862827', 'Julita', 'Maja', 'Mazurek', '789-525-523', 3)
 GO
@@ -523,13 +523,13 @@ INSERT Stanowisko ([StanowiskoID], [NazwaStanowiska]) VALUES (1, N'Dyrektor')
 GO
 INSERT Stanowisko ([StanowiskoID], [NazwaStanowiska]) VALUES (2, N'Kierownik Laboratorium') 
 GO
-INSERT Stanowisko ([StanowiskoID], [NazwaStanowiska]) VALUES (3, N'Pielêgniarka') 
+INSERT Stanowisko ([StanowiskoID], [NazwaStanowiska]) VALUES (3, N'PielÃªgniarka') 
 GO
 INSERT Stanowisko ([StanowiskoID], [NazwaStanowiska]) VALUES (4, N'Laborant') 
 GO
 INSERT Stanowisko ([StanowiskoID], [NazwaStanowiska]) VALUES (5, N'Recepcjonistka') 
 GO
-INSERT Stanowisko ([StanowiskoID], [NazwaStanowiska]) VALUES (6, N'Sprz¹taczka') 
+INSERT Stanowisko ([StanowiskoID], [NazwaStanowiska]) VALUES (6, N'SprzÂ¹taczka') 
 GO
 INSERT Stanowisko ([StanowiskoID], [NazwaStanowiska]) VALUES (7, N'Szatniarz') 
 GO
